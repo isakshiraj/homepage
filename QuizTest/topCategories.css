@@ -1,0 +1,167 @@
+/* Normalize CSS across browsers */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
+
+/* Global body styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    background-image: url(images/textureWhite.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    /* padding-bottom: 7px; */
+}
+
+/* Container for content */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    height: 80vh;
+    padding: 20px;
+    background-color: #c3bade;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-top: 5px;
+    position: relative;
+}
+
+/* Styling for individual boxes */
+.box {
+    padding-bottom: -10px;
+    margin-top: -35px;
+    text-align: center;
+    height: 10vh;
+}
+
+#top-categories h2 {
+    font-size: 38px;
+    margin-bottom: -15px;
+    text-transform: uppercase;
+    color: #3d3b3b;   
+}
+
+#top-categories p {
+    color: #3b3b3b;
+    font-size: 25px;
+    text-transform: uppercase;
+}
+
+/* Career options container */
+.career-options-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px; 
+}
+
+.career-options {
+    width: 80%;
+    padding-left: 20px;
+    padding-top: 30px;
+    padding-right: 20px;
+    padding-bottom: 0px;
+    margin-bottom: 30px;
+    background: linear-gradient(45deg, #e4e3e3, #f4f4f4);
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    text-align: left;
+
+}
+
+.career-options img {
+    width: 20%;
+    height: 20%;
+    display: block;
+    align-items: left;
+}
+
+.career-options h3 {
+    font-size: 30px;
+    text-align: center;
+    margin-top: -20px;
+    margin-bottom: 10px;
+    color: #423f3f;
+}
+
+.career-options h5 {
+    font-size: 15px;
+    text-align: left;
+    padding-left: 190px;
+    margin-top: -230px;
+    font-weight: 500;
+    color: #303030;
+    margin-bottom: -10px;
+}
+
+.career-options p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.4;
+    padding-left: 190px;
+}
+
+.career-options h6 {
+    font-size: 15px;
+    color: #303030;
+    line-height: 1.4;
+    padding-left: 190px;
+    font-weight: 500;
+    margin-top:-10px;
+}
+
+.career-options ul {
+    font-size: 14px;
+    color: #303030;
+    line-height: 1.4;
+    padding-left: 200px;
+    font-weight: 600;
+    margin-top: -35px;
+}
+
+/* Styling for buttons */
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: -10px;
+}
+
+.buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #5c5b5b;
+    background-color: #e3dede;
+    border: 2px solid #e3dede;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.buttons button:hover {
+    color: #3b3b3b;
+}
+
+/* Styling for navigation arrows */
+.navigation-arrows {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow-button {
+    color:rgb(74, 71, 74);
+    background: none;
+    border: none;
+    font-size: 2em;
+    cursor: pointer;
+    padding: 0 20px;
+}
+
+.arrow-button:focus {
+    outline: none;
+}

@@ -1,0 +1,307 @@
+/* Normalize CSS across browsers */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white;
+    position: fixed;
+    height: 100vh; /* Ensure body takes the full height */
+    overflow: hidden; /* Prevent scrolling */
+    transform-origin: top left; /* Set the origin for scaling */
+    font-family: sans-serif;
+}
+
+/*******************starting page***********************************/
+.main {
+    transition: .3s ease;
+    pointer-events: auto;
+}
+
+.main.active {
+    filter: blur(30px); /* Make background blur when popup click */
+    pointer-events: none; /* Pointer not work */
+}
+
+.firstbox {
+    position: relative;
+    /* background-color: #5DCA9C; */
+    background-image: url(images/green.png);
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-position: center center; /* Centers the background image */
+    height: 40vh;
+    width: 100%;
+    border-bottom-left-radius: 80px;
+    border-bottom-right-radius: 80px;
+    font-size: 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.secondbox {
+    position: relative;
+    background-color: #5DCA9C;
+    height: 60vh;
+    width: 100%;
+    border-top-left-radius: 80px;
+    border-top-right-radius: 80px;
+    margin-top: 30px;
+    padding-left: 6vw;
+    padding-top: 4vw;
+    font-size: 25px;
+}
+
+.secondbox h4 {
+    position: relative;
+    margin-bottom: 5px; /* Space between heading and list */
+    font-size: 40px;
+}
+
+.start-button {
+    position: absolute;
+    z-index: 100;
+    top: calc(40vh - 25px); /* Adjusted for button height */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px; /* Adjust as needed */
+    height: 80px; /* Adjust as needed */
+    background-color: white;
+    color: #5DCA9C;
+    border-color: #5DCA9C;
+    border-radius: 45px;
+    font-size: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.7);
+}
+
+.start-button:hover {
+    background-color: #FFFFFF;
+    color: #5DCA9C;
+    font-size: 60px;
+}
+
+/**********************Pop up tutorial instructions*********************************/
+.popupTutorial {
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    transform: translate(-50%, -50%) scale(.9);
+    width: 90%;
+    height: 90%;
+    margin-top: 15%;
+    margin-left: 20%;
+    background:  #fcf2f5;
+    border-radius: 30px;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: .3s ease;
+}
+
+.popupTutorial.active {
+    opacity: 10;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.options {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.labels {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+    width: 70%;
+    margin-left: 150px;
+    /* background-color: pink; */
+}
+
+.option-button-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    margin-top: 30px;
+}
+
+.option-button {
+    position: relative;
+    border: 4px solid #ccc;
+    border-radius: 50%;
+    margin: 0 30px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .option-button:hover {
+    background-color: rgb(179, 227, 245); /* Default hover color 
+} */
+
+.option-button[data-option-index="0"]:hover,
+.option-button[data-option-index="1"]:hover {
+    background-color: #ae7dc4;
+}
+
+.option-button[data-option-index="2"]:hover {
+    background-color: #8e8d8d;
+}
+
+.option-button[data-option-index="3"]:hover,
+.option-button[data-option-index="4"]:hover {
+    background-color: #77dd91;
+}
+
+.option-button.selected[data-option-index="0"], 
+.option-button.selected[data-option-index="1"] {
+    background-color: #ae7dc4; /* Default selected color */
+}
+
+.option-button.selected[data-option-index="2"] {
+    background-color: #8e8d8d;
+}
+
+.option-button.selected[data-option-index="3"], 
+.option-button.selected[data-option-index="4"] {
+    background-color: #77dd91; /* Default selected color */
+}
+
+.option-button[data-option-index="0"],
+.option-button[data-option-index="1"] {
+    border-color: #ae7dc4; /* Purple color for options 1 and 2 */
+    color: purple;
+}
+
+.option-button[data-option-index="2"] {
+    border-color: #8e8d8d; /* Grey color for option 3 */
+    color: #5e5d5d;
+    
+}
+
+.option-button[data-option-index="3"],
+.option-button[data-option-index="4"] {
+    border-color: #77dd91; /* Green color for options 4 and 5 */
+    color: #357d37;
+}
+
+.btn-large {
+    width: 90px;
+    height: 90px;
+}
+
+.btn-medium {
+    width: 60px;
+    height: 60px;
+}
+
+.btn-small {
+    width: 40px;
+    height: 40px;
+}
+
+.label-container {
+    position: relative;
+    /* width: 0px; Match the largest circle width */
+    display: flex;
+    justify-content: center;
+    margin-left: 90px;
+    margin-right: -50px;
+    /* background-color: aqua; */
+}
+
+.label1[data-option-index="0"] {
+    color: purple;
+    text-align: left;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.labelx[data-option-index="1"] {
+    color: purple;
+}
+
+.label2[data-option-index="2"] {
+    color: #6b6a6a;
+    text-align: center;
+    font-size: 25px;
+    margin-left: -160px;
+    font-weight: 500;
+}
+
+.labelx[data-option-index="3"] {
+    color: #4CAF50;
+}
+
+.label3[data-option-index="4"] {
+    color: #4CAF50;
+    text-align: right;
+    font-size: 25px;
+    margin-left: -250px;
+    font-weight: 500;
+}
+
+.popupTutorial .btn-group {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 25%;
+    padding-right: 25%;
+    padding-top: 5%;
+}
+
+.popupTutorial .btn-group .info-btn{
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    height: 70px;
+    background-color: #004BA3;
+    border: 2px solid #004BA3;
+    outline: none;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #FFFFFF;
+    font-weight: 600;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+    transition: .5s;
+}
+
+.popupTutorial .btn-group .info-btn:nth-child(1) {
+    background: #004BA3;
+    color: #FFFFFF;
+}
+
+.popupTutorial .btn-group .info-btn:nth-child(1):hover {
+    background: #FFFFFF;
+    color: #004BA3;
+}
+
+.popupTutorial .btn-group .info-btn:nth-child(2):hover {
+    background: #FFFFFF;
+    color: #004BA3;
+}
+

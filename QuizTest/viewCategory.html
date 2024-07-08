@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Categories</title>
+    <link rel="stylesheet" href="viewCategory.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+</head>
+<body>
+    <div id="results-container" style="display: none;"></div>
+
+    <div class="button-container">
+        <button class="prev-result-button" style="display: none;">Back</button>
+        <button id="back-result-button" class="back-result-button">Back</button>
+        <button class="next-result-button">Next</button>
+        <button id="back-to-dashboard-button" class="back-to-dashboard-button">Back to Dashboard</button>
+    </div>
+    
+    <script>
+        const username = localStorage.getItem('username');
+        document.getElementById('back-to-dashboard-button').addEventListener('click', function() {
+            window.location.href = `/dashboard?username=${username}`;
+        });
+    </script>
+    <script src="viewCategory.js"></script>
+</body>
+</html>

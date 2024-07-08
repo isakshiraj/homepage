@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CareerPathFinder</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    
+</head>
+
+
+<main class="main">
+    <div class="firstbox">
+        <h1 style="color: #FFFFFF; margin-top: 90px; font-weight: 600;">CAREER PATH FINDER</h1>
+        <br>
+        <!----<h2 style="color: #5DCA9C; margin-top: -150px;">Career Quiz</h2>---->
+    </div>
+
+    <button class="start-button">Start</button>
+
+    <div class="secondbox">
+        <h4>Instructions</h4>
+        <ul>
+            <li><strong>60 questions</strong> will be presented to you.</li>
+            <li>There will be <strong>5 options</strong> ranging from the most Disagreed to most Agreed.</li>
+            <li>If you Disagree with the question, choose from the <strong>2 options on the left side</strong> of the
+                middle option according to your degree of disagreement.</li>
+            <li>If you Agree with the question, choose from the <strong>2 right options</strong> according to your
+                degree of agreement.</li>
+            <li>Or choose the <strong>middle option for neutral</strong>.</li>
+            <li>The test will show you which jobs will suit your <strong>interests, talents, and aptitude</strong>.</li>
+        </ul>
+    </div>
+</main>
+
+<div class="popupTutorial">
+    <h1 style="font-size: 70px; margin-top: 15px; color: #423f3f ;">Tutorial</h1>
+    <br>
+    <p style="font-size: 30px;">Choose from these 5 options according to your opinion about the question.</p>
+
+    <div class="options">
+        <div class="option-button-container">
+            <div class="option-button btn-large" data-option-index="0"></div>
+        </div>
+        <div class="option-button-container">
+            <div class="option-button btn-medium" data-option-index="1"></div>
+        </div>
+        <div class="option-button-container">
+            <div class="option-button btn-small" data-option-index="2"></div>
+        </div>
+        <div class="option-button-container">
+            <div class="option-button btn-medium" data-option-index="3"></div>
+        </div>
+        <div class="option-button-container">
+            <div class="option-button btn-large" data-option-index="4"></div>
+        </div>
+    </div>
+    <div class="labels">
+        <div class="label-container">
+            <span class="label1" data-option-index="0">Dislike</span>
+        </div>
+        <div class="label-container">
+            <span class="labelx" data-option-index="1"></span>
+        </div>
+        <div class="label-container">
+            <span class="label2" data-option-index="2">Neutral</span>
+        </div>
+        <div class="label-container">
+            <span class="labelx" data-option-index="3"></span>
+        </div>
+        <div class="label-container">
+            <span class="label3" data-option-index="4">Agree</span>
+        </div>
+    </div>
+
+    <div class="btn-group">
+        <button class="info-btn exit-button">Exit Quiz</button>
+        <a href="quiz.html"><button class="info-btn continue-btn" style="font-size: 30px; font-weight: 600;">Continue</button></a>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+
+
+</body>
+
+</html>
