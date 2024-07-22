@@ -9,10 +9,22 @@ body {
     height: 100vh;
 }
 
+.mainContainer {
+    width: 100%;
+    max-width: 1200px;
+    margin-top: -60px ;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
 .container {
     display: flex;
-    width: 90%;
-    height: 80%;
+    width: 100%;
+    height: 80vh;
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
@@ -22,7 +34,7 @@ body {
 .sidebar {
     background-color: #F5F5F5;
     padding: 20px;
-    width: 20%;
+    width: 250px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,14 +43,14 @@ body {
 .sidebar h2 {
     font-weight: bold;
     margin-bottom: 20px;
+    font-size: 24px;
 }
 
 .sidebar ul {
     list-style: none;
     padding: 0;
     width: 100%;
-    text-align: left;
-    padding-left: 70px;
+    text-align: center;
 }
 
 .sidebar ul li {
@@ -49,8 +61,7 @@ body {
     color: #333;
     text-decoration: none;
     transition: color 0.3s ease;
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 18px;
 }
 
 .sidebar ul li a:hover {
@@ -59,28 +70,47 @@ body {
 
 .main-content {
     padding: 40px;
-    width: 75%;
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.main-content h1 {
+.main-content .button-container {
+    margin-top: 20px;
+    background-color: #F5F5F5;
+    width: 40%;
+    height: 40%;
+    border-radius: 10px;
+}
+
+.main-content .button-container:hover {
+    transform: translateY(-5px); /* Moves the container up by 10px */
+    transition: transform 0.3s ease; /* Adds a smooth transition effect */
+}
+
+.main-content .button-container h3{
+    font-weight: bold;
     margin-bottom: 20px;
+    font-size: 24px;
 }
 
 .main-content a button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #4CAF50;
+    padding: 15px 30px;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: #69ce6d;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-top: 25px;
+    margin-left: 180px;
 }
 
 .main-content a button:hover {
-    background-color: #45a049;
+    background-color: white;
+    color: #69ce6d;
 }

@@ -1,15 +1,3 @@
-// // Example: Change background color every 2 seconds
-// const colors = [" #00246B", "#CADCFC"];
-// let currentIndex = 0;
-
-// function changeBackgroundColor() {
-//     document.body.style.backgroundColor = colors[currentIndex];
-//     currentIndex = (currentIndex + 1) % colors.length;
-// }
-
-// setInterval(changeBackgroundColor, 2000); // Change every 5 seconds
-
-
 const questions = [
   
   {
@@ -688,136 +676,8 @@ const categoryPoints = {
     Social: 0,
     Enterprising: 0,
     Conventional: 0,
-    // Add other categories if any...
 };
 
-// function displayQuestions() {
-//     const container = document.getElementById('questions-container');
-//     container.innerHTML = '';
-
-
-//     // Check if currentQuestionIndex is 0 to hide "Previous" button
-//     if (currentQuestionIndex === 0) {
-//       document.getElementById('prev-btn').style.display = 'none';
-//   } else {
-//       document.getElementById('prev-btn').style.display = 'inline-block';
-//   }
-
-
-//     for (let i = 0; i < 5; i++) {
-//         if (currentQuestionIndex + i >= questions.length) break;
-//         const questionData = questions[currentQuestionIndex + i];
-//         const questionElement = document.createElement('div');
-//         questionElement.classList.add('question');
-//         questionElement.innerHTML = `
-//             <div>${questionData.question}</div>
-//             <div class="options">
-//                 ${questionData.options.map((option, index) => {
-//                     let sizeClass = '';
-//                     if (index === 0 || index === 4) {
-//                         sizeClass = 'btn-large';
-//                     } else if (index === 1 || index === 3) {
-//                         sizeClass = 'btn-medium';
-//                     } else if (index === 2) {
-//                         sizeClass = 'btn-small';
-//                     }
-
-//                     return `
-//                         <div class="option-button ${sizeClass}" data-question-index="${currentQuestionIndex + i}" data-option-index="${index}">
-//                             ${option.value !== undefined ? `<span>${option.text}</span>` : ''}
-//                         </div>`;
-//                 }).join('')}
-//             </div>
-//         `;
-//         container.appendChild(questionElement);
-
-//         // Add horizontal line after each question except the last one
-//         if (i < 6) {
-//             const separator = document.createElement('hr');
-//             separator.classList.add('question-separator');
-//             container.appendChild(separator);
-//         }
-//     }
-//     addEventListeners();
-//     highlightSelectedOptions();
-
-        
-
-// }
-
-
-
-
-
-
-// function highlightSelectedOptions() {
-//     selectedOptions.forEach((selectedOptionIndex, questionIndex) => {
-//         if (selectedOptionIndex !== null) {
-//             const optionButton = document.querySelector(`.option-button[data-question-index="${questionIndex}"][data-option-index="${selectedOptionIndex}"]`);
-//             if (optionButton) {
-//                 optionButton.classList.add('selected');
-//             }
-//         }
-//     });
-// }
-
-// function addEventListeners() {
-//     document.querySelectorAll('.option-button').forEach(button => {
-//         button.addEventListener('click', (e) => {
-//             const questionIndex = button.getAttribute('data-question-index');
-//             const optionIndex = button.getAttribute('data-option-index');
-
-//             // Deselect previous option and select new one
-//             document.querySelectorAll(`.option-button[data-question-index="${questionIndex}"]`).forEach(b => b.classList.remove('selected'));
-//             button.classList.add('selected');
-
-//             selectedOptions[questionIndex] = optionIndex;
-
-//             // Scroll to the next question or to the "Next" button
-//             const nextQuestionIndex = parseInt(questionIndex) + 1;
-//             if (nextQuestionIndex < currentQuestionIndex + 5) {
-//                 const nextQuestion = document.querySelector(`.question:nth-child(${(nextQuestionIndex % 5) * 2 + 1})`);
-//                 if (nextQuestion) {
-//                     nextQuestion.scrollIntoView({ behavior: 'smooth', block: 'start' });
-//                 }
-//             } else {
-//                 document.getElementById('next-btn').scrollIntoView({ behavior: 'smooth', block: 'start' });
-//             }
-//         });
-//     });
-// }
-
-
-// document.getElementById('next-btn').addEventListener('click', () => {
-//   document.querySelectorAll('.option-button.selected').forEach(selectedOption => {
-//       const questionIndex = selectedOption.getAttribute('data-question-index');
-//       const optionIndex = selectedOption.getAttribute('data-option-index');
-//       const questionData = questions[questionIndex];
-//       // Convert option value to integer before adding to categoryPoints
-//       categoryPoints[questionData.category] += parseInt(questionData.options[optionIndex].value);
-//   });
-
-//   currentQuestionIndex += 5;
-//   if (currentQuestionIndex < questions.length) {
-//       displayQuestions();
-//       // Scroll to the top of the questions container
-//       document.getElementById('questions-container').scrollTo(0, 0);
-//   } else {
-//       localStorage.setItem('categoryPoints', JSON.stringify(categoryPoints));
-//       window.location.href = 'results.html';
-//   }
-// });
-
-
-// document.getElementById('prev-btn').addEventListener('click', () => {
-//     currentQuestionIndex -= 5;
-//     if (currentQuestionIndex < 0) currentQuestionIndex = 0;
-//     displayQuestions();
-//     // Scroll to the top of the questions container
-//     document.getElementById('questions-container').scrollTo(0, 0);
-// });
-
-// displayQuestions();
 
 
 
@@ -948,6 +808,9 @@ function calculateTopCategories() {
   return [sortedCategories[0], sortedCategories[1]]; // Return top two categories
 }
 
+
+
+//code portion written in index.js
 function saveResult(username, topCategory1, topCategory2) {
   fetch('/save-result', {
       method: 'POST',
@@ -971,6 +834,7 @@ function saveResult(username, topCategory1, topCategory2) {
       // Optionally handle error message here
   });
 }
+
 
 document.addEventListener('DOMContentLoaded', () => {
   displayQuestions();

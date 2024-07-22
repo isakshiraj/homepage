@@ -1,214 +1,9 @@
-// const express = require("express");
-// const app = express();
-// const path = require("path");
-
-// const hbs = require("hbs");
-// const collection = require("./mongodb");
-
-// const templatePath = path.join(__dirname, '../templates');
-// const publicPath = path.join(__dirname, '../public');
-
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: false }));
-// app.use(express.static(publicPath)); // Serve static files
-
-// app.set("view engine", "hbs");
-// app.set("views", templatePath);
-
-// app.get("/", (req, res) => {
-//     res.render("login");
-// });
-
-// app.get("/signup", (req, res) => {
-//     res.render("signup");
-// });
-
-// app.post("/signup", async (req, res) => {
-//     const data = {
-//         name: req.body.name,
-//         email: req.body.email,
-//         password: req.body.password
-//     };
-
-//     await collection.insertMany([data]);
-//     res.render("dashboard", { username: req.body.name });
-// });
-
-// app.post("/login", async (req, res) => {
-//     try {
-//         const check = await collection.findOne({ name: req.body.name, email: req.body.email });
-//         if (check.password === req.body.password) {
-//             res.render("dashboard", { username: req.body.name });
-//         } else {
-//             res.send("Wrong password");
-//         }
-//     } catch {
-//         res.send("Wrong details");
-//     }
-// });
-
-// app.get("/dashboard", (req, res) => {
-//     const username = req.query.username;
-//     res.render("dashboard", { username: username });
-// });
-
-// app.get("/scores", (req, res) => {
-//     // Render scores page here
-//     res.send("Scores page"); // Placeholder
-// });
-
-// app.get("/logout", (req, res) => {
-//     res.redirect("/"); // Redirect to login page
-// });
-
-// app.use('/quiztest', express.static(path.join(__dirname, '../QuizTest')));
-
-// app.get('/quiztest', (req, res) => {
-//     res.sendFile(path.join(__dirname, '../QuizTest/index.html'));
-// });
-
-// const PORT = process.env.PORT || 3000;
-// app.listen(PORT, () => {
-//     console.log(`Server is running on port ${PORT}`);
-// });
-
-
-//  correct code
-
-
-// const express = require("express");
-// const app = express();
-// const path = require("path");
-
-// const hbs = require("hbs");
-// const collection = require("./mongodb");
-
-// const templatePath = path.join(__dirname, '../templates');
-// const publicPath = path.join(__dirname, '../public');
-
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: false }));
-// app.use(express.static(publicPath));
-
-// app.set("view engine", "hbs");
-// app.set("views", templatePath);
-
-// // Render login page
-// app.get("/", (req, res) => {
-//     res.render("login");
-// });
-
-// // Render signup page
-// app.get("/signup", (req, res) => {
-//     res.render("signup");
-// });
-
-// // Handle signup form submission
-// app.post("/signup", async (req, res) => {
-//     const data = {
-//         name: req.body.name,
-//         email: req.body.email,
-//         password: req.body.password
-//     };
-
-//     await collection.insertMany([data]);
-//     res.render("dashboard", { username: req.body.name });
-// });
-
-// // Handle login form submission
-// app.post("/login", async (req, res) => {
-//     try {
-//         const check = await collection.findOne({ name: req.body.name, email: req.body.email });
-//         if (check.password === req.body.password) {
-//             res.render("dashboard", { username: req.body.name });
-//         } else {
-//             res.send("Wrong password");
-//         }
-//     } catch {
-//         res.send("Wrong details");
-//     }
-// });
-
-// // Render dashboard page
-// app.get("/dashboard", (req, res) => {
-//     const username = req.query.username;
-//     res.render("dashboard", { username });
-// });
-
-// // POST endpoint to save quiz results
-// app.post("/save-result", async (req, res) => {
-//     const { username, topCategory1, topCategory2 } = req.body;
-
-//     try {
-//         const user = await collection.findOneAndUpdate(
-//             { name: username },
-//             { $push: { results: { topCategory1, topCategory2 } } },
-//             { new: true }
-//         );
-
-//         if (!user) {
-//             console.log(`User '${username}' not found in database`);
-//             return res.status(404).send("User not found");
-//         }
-
-//         res.redirect(`/dashboard?username=${username}`);
-//     } catch (error) {
-//         console.error("Error saving result:", error);
-//         res.status(500).send("Error saving result");
-//     }
-// });
-
-// // GET endpoint to retrieve results
-// app.get("/results", async (req, res) => {
-//     const username = req.query.username;
-
-//     try {
-//         const user = await collection.findOne({ name: username });
-
-//         if (!user) {
-//             console.log(`User '${username}' not found in database`);
-//             return res.status(404).send("User not found");
-//         }
-
-//         res.render("results", { results: user.results, username: username });
-//     } catch (error) {
-//         console.error("Error retrieving results:", error);
-//         res.status(500).send("Error retrieving results");
-//     }
-// });
-
-// // Register Handlebars helper function
-// hbs.registerHelper('formatDate', function(dateString) {
-//     const date = new Date(dateString);
-//     const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-//     return date.toLocaleDateString('en-GB', options); // Change 'en-GB' to your desired locale
-// });
-
-// // Handle user logout
-// app.get("/logout", (req, res) => {
-//     res.redirect("/");
-// });
-
-// // Serve QuizTest directory as static content
-// app.use('/quiztest', express.static(path.join(__dirname, '../QuizTest')));
-
-// // Serve QuizTest index.html
-// app.get('/quiztest', (req, res) => {
-//     res.sendFile(path.join(__dirname, '../QuizTest/index.html'));
-// });
-
-// const PORT = process.env.PORT || 3000;
-// app.listen(PORT, () => {
-//     console.log(`Server is running on port ${PORT}`);
-// });
-
-
-
 const express = require("express");
 const app = express();
 const path = require("path");
 const hbs = require("hbs");
 const collection = require("./mongodb");
+const bcrypt = require("bcrypt");
 const fs = require('fs');
 const PDFDocument = require('pdfkit');
 
@@ -243,31 +38,39 @@ app.get("/signup", (req, res) => {
     res.render("signup");
 });
 
-// Handle signup form submission
 app.post("/signup", async (req, res) => {
-    const data = {
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password
-    };
+    try {
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+        const data = {
+            name: req.body.name,
+            email: req.body.email,
+            password: hashedPassword
+        };
 
-    await collection.insertMany([data]);
-    res.render("login");
+        await collection.insertMany([data]);
+        res.render("login");
+    } catch (error) {
+        console.error("Error during signup:", error);
+        res.status(500).send("Error during signup");
+    }
 });
 
-// Handle login form submission
 app.post("/login", async (req, res) => {
     try {
-        const check = await collection.findOne({ name: req.body.name, email: req.body.email });
-        if (check.password === req.body.password) {
+        const user = await collection.findOne({ name: req.body.name, email: req.body.email });
+
+        if (user && await bcrypt.compare(req.body.password, user.password)) {
             res.render("dashboard", { username: req.body.name });
         } else {
             res.send("Wrong password");
         }
-    } catch {
+    } catch (error) {
+        console.error("Error during login:", error);
         res.send("Wrong details");
     }
 });
+
+
 
 // Render dashboard page
 app.get("/dashboard", (req, res) => {
@@ -275,7 +78,8 @@ app.get("/dashboard", (req, res) => {
     res.render("dashboard", { username });
 });
 
-// POST endpoint to save quiz results
+// code portion written in scriptQuiz.js
+
 app.post("/save-result", async (req, res) => {
     const { username, topCategory1, topCategory2 } = req.body;
 
@@ -298,7 +102,7 @@ app.post("/save-result", async (req, res) => {
     }
 });
 
-// GET endpoint to retrieve results
+// retrieve results
 app.get("/results", async (req, res) => {
     const username = req.query.username;
 
@@ -368,7 +172,7 @@ app.get("/logout", (req, res) => {
 // Serve QuizTest directory as static content
 app.use('/quiztest', express.static(path.join(__dirname, '../QuizTest')));
 
-// Serve QuizTest index.html
+// Serve TrailMakingTest index.html
 app.get('/quiztest', (req, res) => {
     res.sendFile(path.join(__dirname, '../QuizTest/index.html'));
 });
