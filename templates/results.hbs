@@ -25,12 +25,25 @@
                 {{#each results}}
                 <tr>
                     <td>{{formatDate this.date}}</td>
-                    <td>{{this.topCategory1}}</td>
-                    <td>{{this.topCategory2}}</td>
+                    <td class="category" data-category="{{this.topCategory1}}">{{this.topCategory1}}</td>
+                    <td class="category" data-category="{{this.topCategory2}}">{{this.topCategory2}}</td>
                 </tr>
                 {{/each}}
             </tbody>
         </table>
+    </div>
+
+    <!-- Popup structure -->
+    <div id="popup" class="popup hidden">
+        <div class="popup-content">
+            <span id="closePopup" class="close-btn">&times;</span>
+            <h2 id="popupTitle"></h2>
+            <img id="popupImage" src="" alt="Category Image">
+            <p id="popupDefinition"></p>
+            <p id="popupDescription"></p>
+            <h3 style=" font-size: 25px; color: #303030; line-height: 1.4;  padding-left: 400px; font-weight: 600; margin-top:10px; margin-bottom: -10px;">Career Options:</h3>
+            <ul id="popupCareers"></ul>
+        </div>
     </div>
 
     <script>
@@ -38,6 +51,118 @@
             const username = '{{username}}';
             window.location.href = `/download-results-pdf?username=${username}`;
         });
+
+        // Add event listener for category clicks
+        document.querySelectorAll('.category').forEach(function(categoryElement) {
+            categoryElement.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                displayPopup(category);
+            });
+        });
+
+        document.getElementById('closePopup').addEventListener('click', function() {
+            document.getElementById('popup').classList.add('hidden');
+        });
+
+        const careers = {
+    Realistic: {
+        title: "REALISTIC",
+        definition: "Practical, physical, concrete, hands-on, machine, and tool-oriented.",
+        description: "Practical, hands-on difficulties and their answers are common work activities in thinking occupations. They work with genuine things like wood, tools, and machines, as well as plants and animals. A large number of the jobs involve working outside and don't demand a lot of paperwork or close collaboration with others. Thinking personality types tend to be kinesthetic learners who prefer learning by doing to listening to lectures in a classroom.",
+        career: [
+            "Construction and building trades",
+            "Professional sports, athletics, and physical training",
+            "Mechanics and engineering",
+            "Commercial drivers and truckers",
+            "Computer technicians, software developers and testers, and IT Support"
+        ],
+        image: "/quiztest/images/image_1.png"
+    },
+    Artistic: {
+        title: "ARTISTIC",
+        definition: "Creative, original, independent, chaotic, inventive, media, graphics, text.",
+        description: "Working with forms, designs, and patterns is a common task for those in the creation profession. They can be completed without strictly adhering to a set of standards, and they frequently call for self-expression. People with artistic personalities are drawn to tasks that don't require a lot of structure or regulations.",
+        career: [
+            "Acting",
+            "Music",
+            "Drama",
+            "Dance",
+            "Photography",
+            "Design"
+        ],
+        image: "/quiztest/images/image_2.png"
+    },
+    Investigative: {
+        title: "INVESTIGATIVE",
+        definition: "Analytical, intellectual, scientific, explorative, thinker.",
+        description: "Working with ideas is a common aspect of persuading jobs, which demands a lot of thought. These professions may require fact-finding and mental problem-solving. People who are curious tend to think abstractly, appreciate gathering information, dig deeply for details, and take great pleasure in solving challenging puzzles.",
+        career: [
+            "Biology",
+            "Archeology",
+            "Physics",
+            "Detectives",
+            "Forensic psychologists"
+        ],
+        image: "/quiztest/images/image_3.png"
+    },
+    Social: {
+        title: "SOCIAL",
+        definition: "Cooperative, supporting, helping, healing/nurturing, teaching.",
+        description: "Helping jobs usually entail interacting, teaching, and working with people. These jobs frequently entail serving or assisting others. In terms of social personality traits and career choice, this group's primary objective is to serve others. They are happiest when they are collaborating with others to advance, mature, or heal. They are excellent listeners and caregivers.",
+        career: [
+            "Funeral attendants",
+            "Wait staff",
+            "Bartenders",
+            "Ushers",
+            "Detectives",
+            "Lawyers"
+        ],
+        image: "/quiztest/images/image_4.png"
+    },
+    Enterprising: {
+        title: "ENTERPRISING",
+        definition: "Competitive environments, leadership, persuading, status.",
+        description: "Building occupations frequently involve starting up and carrying out projects. These occupations can involve leading people and making many decisions. Sometimes they require risk-taking, and they often deal with business.",
+        career: [
+            "Management",
+            "Law",
+            "Sales and marketing",
+            "Advertising",
+            "Politics",
+            "Stock brokers",
+            "Chief executive positions"
+        ],
+        image: "/quiztest/images/image_5.png"
+    },
+    Conventional: {
+        title: "CONVENTIONAL",
+        definition: "Detail-oriented, organizing, clerical.",
+        description: "Organizing jobs usually requires adhering to predetermined protocols and schedules. These jobs may involve more data and detail work than conceptual work. Usually, there is an obvious chain of command to obey. A person with this disposition is probably systematic and orderly and enjoys organization in both their job and personal lives.",
+        career: [
+            "Accounting",
+            "Finance",
+            "Mathematics",
+            "Business administration",
+            "Information technology",
+            "Business finance fields",
+            "Librarians",
+            "Accountants"
+        ],
+        image: "/quiztest/images/image_6.png"
+    }
+};
+
+        function displayPopup(category) {
+            const career = careers[category];
+            if (career) {
+                document.getElementById('popupTitle').innerText = career.title;
+                document.getElementById('popupDefinition').innerText = career.definition;
+                document.getElementById('popupDescription').innerText = career.description;
+                document.getElementById('popupCareers').innerHTML = career.career.map(c => `<li>${c}</li>`).join('');
+                document.getElementById('popupImage').src = career.image;
+                document.getElementById('popup').classList.remove('hidden');
+            }
+        }
     </script>
 </body>
 </html>
