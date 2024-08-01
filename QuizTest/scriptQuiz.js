@@ -782,7 +782,7 @@ document.getElementById('next-btn').addEventListener('click', () => {
       // Scroll to the top of the questions container
       document.getElementById('questions-container').scrollTo(0, 0);
   } else {
-      // Save results
+      // Save results (for fetch score to dashboard results)
       const username = localStorage.getItem('username');
       const topCategories = calculateTopCategories();
       const topCategory1 = topCategories[0];
@@ -812,7 +812,7 @@ function calculateTopCategories() {
 
 //code portion written in index.js
 function saveResult(username, topCategory1, topCategory2) {
-  fetch('/save-result', {
+  fetch('/save-resultcareerpathfinder', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'

@@ -80,7 +80,7 @@ app.get("/dashboard", (req, res) => {
 
 // code portion written in scriptQuiz.js
 
-app.post("/save-result", async (req, res) => {
+app.post("/save-resultcareerpathfinder", async (req, res) => {
     const { username, topCategory1, topCategory2 } = req.body;
 
     try {
